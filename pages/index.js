@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Box, Image, Button, useColorMode } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
+
 import Link from "next/link";
-import { keyframes } from "@emotion/react";
-
-
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 
 const property = {
   imageUrl1: "https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?cs=srgb&dl=pexels-sora-shimazaki-5668859.jpg&fm=jpg",
@@ -19,12 +19,34 @@ const property = {
   imageUrl10: "https://images.pexels.com/photos/262353/pexels-photo-262353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 };
 
+const MyCarousel = () => {
+  return (
+    <Carousel
+    showThumbs={false}
+    infiniteLoop
+    autoPlay
+    interval={2000} // Set the autoplay interval to 2000 milliseconds (2 seconds)
+    style={{ maxWidth: "80%", margin: "auto" }}
+  >
+      {Object.values(property).map((imageUrl, index) => (
+        <div key={index}>
+          <img
+            src={imageUrl}
+            alt={`Image ${index + 1}`}
+            style={{ Width: "170px", height: "350px", objectFit: "contain",margin:"10px" }} // Adjust image size and fit
+          />
+        </div>
+      ))}
+    </Carousel>
+  );
+};
 function Home() {
   const { colorMode } = useColorMode();
 
   return (
     <>
        <Navbar />
+       <MyCarousel/>
       <Grid templateColumns="repeat(5, 1fr)" p={5} gap={5} h="100%" >
      
         <Box>
