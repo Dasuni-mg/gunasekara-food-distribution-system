@@ -30,7 +30,7 @@ const MyCarousel = () => {
   >
       {Object.values(property).map((imageUrl, index) => (
         <div key={index}>
-          <img
+          <Image
             src={imageUrl}
             alt={`Image ${index + 1}`}
             style={{ Width: "170px", height: "350px", objectFit: "contain",margin:"10px" }} // Adjust image size and fit
